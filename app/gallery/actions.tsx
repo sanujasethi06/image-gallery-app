@@ -1,7 +1,7 @@
 "use server"
 import cloudinary from "cloudinary"
 import { revalidatePath } from "next/cache"
-export async function setAsFavoriteAction(publicId: string, isFavorited: boolean) {
+export async function setAsFavoriteAction(publicId: string, isFavorited: boolean,path: string){
     
     if (isFavorited) {
       await cloudinary.v2.uploader.add_tag("favorite", [publicId])
@@ -10,6 +10,6 @@ export async function setAsFavoriteAction(publicId: string, isFavorited: boolean
         
         await cloudinary.v2.uploader.remove_tag("favorite", [publicId])
     }
-    await new Promise((resolve) => {setTimeout(resolve,500) })
-    revalidatePath("/gallery")
+    await new Promise((resolve) => { setTimeout(resolve, 1500) });
+    revalidatePath(path);
 }
