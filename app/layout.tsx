@@ -25,7 +25,9 @@ export default function RootLayout({
           <div className="flex h-16 items-center px-4">
             {/* <TeamSwitcher />
             <MainNav className="mx-6" /> */}
-            PHOTO APP
+            <h1 className='font-bold text-2xl'>
+              GALLERY GLEAM
+            </h1>
             <div className="ml-auto flex items-center space-x-4">
               
              <Avatar>

@@ -13,16 +13,19 @@ type SearchResult = {
 const GalleryPage = async () => {
    const results = (await cloudinary.v2.search
   .expression('resource_type:image')
-  .sort_by('public_id','desc')
-  .max_results(5)
+  .sort_by('created_at','desc')
+  .max_results(10)
        .execute()) as {resources:SearchResult[]};
   return (
       <section>
-          <div className="flex justify-between">
+          <div className="flex flex-col gap-8">
+              <div className="flex justify-between">
+                  
               <h1 className='font-bold text-4xl'>
                   Gallery
               </h1>
               <UploadButton />
+              </div>
               <div className="grid grid-cols-4 gap-4">
                   {results.resources.map((result) => (
                       <CloudinaryImage

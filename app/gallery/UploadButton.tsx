@@ -4,12 +4,14 @@ import { UploadResult } from '../page';
 
 import React from 'react'
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 const UploadButton = () => {
+    const router = useRouter()
   return (
     
               <Button asChild>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
                       
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                       strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -19,7 +21,11 @@ const UploadButton = () => {
 
               <CldUploadButton uploadPreset="epnb3tgq"
         onUpload = {(result: UploadResult) => {
-        // setImageId (result.info.public_id);
+            // setImageId (result.info.public_id);
+            setTimeout(() => {
+                router.refresh();
+             },1000)
+            
       }}/>
                   </div>
               </Button>
