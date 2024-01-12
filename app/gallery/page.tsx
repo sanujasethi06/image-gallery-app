@@ -17,7 +17,12 @@ const GalleryPage = async () => {
        .sort_by('created_at', 'desc')
        .with_field('tags')
   .max_results(30)
-       .execute()) as {resources:SearchResult[]};
+       .execute()) as { resources: SearchResult[] };
+    const MAX_COLUMNS = 4;
+    function getColumns(colIndex: number) {
+        return results.resources.filter((resource ,idx)=> idx % MAX_COLUMNS ===colIndex)
+        
+    }
   return (
       <section>
           <div className="flex flex-col gap-8">
@@ -29,7 +34,12 @@ const GalleryPage = async () => {
               <UploadButton />
               </div>
               <div className="grid grid-cols-4 gap-4">
-                  {results.resources.map((result) => (
+                  {[
+                      getColumns(0),
+                      getColumns(1),
+                      getColumns(2),
+                      getColumns(3)].map((column, idx) => <div key={ idx} className="flex flex-col gap-4">
+                         {column.map((result) => (
                       <CloudinaryImage
                           key={result.public_id}
                             width="400"
@@ -38,7 +48,12 @@ const GalleryPage = async () => {
                             // sizes="100vw"
                           alt="an image of something"
                      />
-                  ))}
+                  ))} 
+                      </div>)
+                  
+                      
+                  }
+                  
               </div>
           </div>
     </section>
