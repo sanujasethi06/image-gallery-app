@@ -32,14 +32,11 @@ const GalleryPage = async () => {
                   {results.resources.map((result) => (
                       <CloudinaryImage
                           key={result.public_id}
-                          path="/gallery"
                             width="400"
                           height="300"
                           imageData={result}
-                            src={result.public_id}
                             // sizes="100vw"
                           alt="an image of something"
-                          publicId={result.public_id}
                      />
                   ))}
               </div>
