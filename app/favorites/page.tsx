@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/button';
 import cloudinary from 'cloudinary';
 import { CloudinaryImage } from '../gallery/cloudinary-image';
 import { SearchResult } from '../gallery/page';
+import FavoriteList from './favorite-list';
+import { ForceRefresh } from '@/components/force-refresh';
+
 
 const FavoritePage = async () => {
    const results = (await cloudinary.v2.search
@@ -15,30 +18,14 @@ const FavoritePage = async () => {
   .max_results(30)
        .execute()) as {resources:SearchResult[]};
   return (
-      <section>
+    <section>
+      <ForceRefresh/>
           <div className="flex flex-col gap-8">
               <div className="flex justify-between">
-                  
-              <h1 className='font-bold text-4xl'>
-                  Favorite Images
-              </h1>
               
-              </div>
-              <div className="grid grid-cols-4 gap-4">
-                  {results.resources.map((result) => (
-                      <CloudinaryImage
-                          key={result.public_id}
-                          path="/favorites"
-                            width="400"
-                          height="300"
-                          imageData={result}
-                            src={result.public_id}
-                            // sizes="100vw"
-                          alt="an image of something"
-                          publicId={result.public_id}
-                     />
-                  ))}
-              </div>
+        </div>
+        <FavoriteList initialResource={results.resources}/>
+              
           </div>
     </section>
   )
