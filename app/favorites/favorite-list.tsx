@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { CloudinaryImage } from '../gallery/cloudinary-image';
 import { SearchResult } from '../gallery/page';
+import { ImageGrid } from '@/components/image-grid';
 
 const FavoriteList = ({ initialResource }: { initialResource: SearchResult[] }) => {
     const [resources, setResources] = useState(initialResource);
@@ -19,14 +20,15 @@ const FavoriteList = ({ initialResource }: { initialResource: SearchResult[] }) 
               </h1>
               
               </div>
-              <div className="grid grid-cols-4 gap-4">
-                  {resources.map((result) => (
+              <ImageGrid images={resources}
+                  getImage={(imageData: SearchResult) => {
+                      return (
                       <CloudinaryImage
-                          key={result.public_id}
+                          key={imageData.public_id}
                           
                             width="400"
                           height="300"
-                          imageData={result}
+                          imageData={imageData}
                           onUnheart={(unheartedResource) => {
                               setResources((currentResources)=>
                       currentResources.filter((resource)=>resource.public_id !== unheartedResource.public_id)
@@ -37,8 +39,9 @@ const FavoriteList = ({ initialResource }: { initialResource: SearchResult[] }) 
                           alt="an image of something"
                           
                      />
-                  ))}
-              </div>
+                  )
+              }}/>
+              
           </div>
     </section>
   )
