@@ -3,6 +3,7 @@ import React from 'react'
 import cloudinary from 'cloudinary';
 import AlbumGrid from './album-grid';
 import { SearchResult } from '@/app/gallery/page';
+import { ForceRefresh } from '@/components/force-refresh';
 
 
 
@@ -17,6 +18,7 @@ const GalleryPage = async ({params : {albumName}}:{params:{albumName: string}}) 
     
   return (
       <section>
+          <ForceRefresh/>
           <div className="flex flex-col gap-8">
               <div className="flex justify-between">
                   

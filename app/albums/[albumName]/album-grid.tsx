@@ -2,7 +2,8 @@
 import React from 'react'
 import { CloudinaryImage } from '@/app/gallery/cloudinary-image';
 import { ImageGrid } from '@/components/image-grid';
-import { SearchResult } from './page';
+import { SearchResult } from '@/app/gallery/page';
+
 
 
 
