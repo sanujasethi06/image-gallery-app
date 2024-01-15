@@ -13,9 +13,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Menu from './icons/menu'
-import { FolderPlus } from 'lucide-react'
+import { FolderPlus, PencilIcon } from 'lucide-react'
 import { AddToAlbumDialog } from './add-to-album'
 import { SearchResult } from '@/app/gallery/page'
+import Link from 'next/link'
 
 
 export function ImageMenu({image} : {image:SearchResult}) {
@@ -25,15 +26,18 @@ export function ImageMenu({image} : {image:SearchResult}) {
             
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className='w-12 h-12 p-0'><Menu/></Button>
+        <Button variant="secondary" className='w-12 h-12 p-0'><Menu/></Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
        
             <DropdownMenuItem asChild >
-            {/* <FolderPlus className='mr-2 h-4 w-4'/>
-            Add to Album */}
                         <AddToAlbumDialog image={ image} onClose={()=>setOpen(false)}/>
-          </DropdownMenuItem>
+                    </DropdownMenuItem>
+                     <DropdownMenuItem asChild >
+                        <Link href={`/edit?publicId=${encodeURIComponent(image.public_id)}`}>
+                            <PencilIcon className='mr-2 h-4 w-4'/>
+                            Edit</Link>
+            </DropdownMenuItem>
           
        
       </DropdownMenuContent>
