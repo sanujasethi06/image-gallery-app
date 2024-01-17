@@ -1,15 +1,30 @@
-"use client"
-import { Button } from '@/components/ui/button'
-import { CldImage } from 'next-cloudinary'
-import React, { useState } from 'react'
+"use client";
 
-export default function EditPage({searchParams:{publicId}}:{searchParams:{publicId:string}}) {
-  const [transformation, setTransformation] = useState<undefined
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CldImage } from "next-cloudinary";
+import { useState } from "react";
+
+export default function EditPage({
+  searchParams: { publicId },
+}: {
+  searchParams: {
+    publicId: string;
+  };
+}) {
+  const [transformation, setTransformation] = useState<
+    | undefined
     | "generative-fill"
     | "blur"
     | "grayscale"
     | "pixelate"
-    | "bg-remove">()
+    | "bg-remove"
+  >();
+
+  const [pendingPrompt, setPendingPrompt] = useState("");
+  const [prompt, setPrompt] = useState("");
+
   return (
     <section>
       <div className="flex flex-col gap-8">
@@ -26,16 +41,16 @@ export default function EditPage({searchParams:{publicId}}:{searchParams:{public
             <Button
               onClick={() => {
                 setTransformation("generative-fill");
-                // setPrompt(pendingPrompt);
+                setPrompt(pendingPrompt);
               }}
             >
               Apply Generative Fill
             </Button>
-            {/* <Label>Prompt</Label>
+            <Label>Prompt</Label>
             <Input
               value={pendingPrompt}
               onChange={(e) => setPendingPrompt(e.currentTarget.value)}
-            /> */}
+            />
           </div>
 
           <Button onClick={() => setTransformation("blur")}>Apply Blur</Button>
