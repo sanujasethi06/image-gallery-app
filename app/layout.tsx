@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import SideMenu from '@/components/ui/SideMenu'
+import { ThemeProvider } from "@/components/theme-provider"
+import { ModeToggle } from '@/components/ui/toggle-button'
+import Image from 'next/image'
 
 
 
@@ -21,20 +24,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
-            {/* <TeamSwitcher />
-            <MainNav className="mx-6" /> */}
-            <h1 className='font-bold text-2xl'>
+            <Image src='/logo-icon.png' width="40" height="40" alt="icon of this album app"/>
+            <h1 className='font-bold text-xl pl-2'>
               GALLERY GLEAM
             </h1>
             <div className="ml-auto flex items-center space-x-4">
-              
+              <ModeToggle/>
              <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            </div>
+                </Avatar>
+                
+              </div>
           </div>
         </div>
         <div className='flex'>
@@ -43,7 +52,7 @@ export default function RootLayout({
           {children}
         </div>
         </div>
-        
+        </ThemeProvider>
       </body>
     </html>
   )
