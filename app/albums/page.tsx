@@ -23,7 +23,7 @@ export default async function AlbumsPage()  {
                   
               {
                   folders.map((folder) => (
-                      <AlbumCard folder={folder} />
+                      <AlbumCard key={folder.path} folder={folder} />
                   ))
               }
               </div>
