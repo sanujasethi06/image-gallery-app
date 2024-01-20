@@ -6,11 +6,11 @@
 </div>
 <div>
   <div>## Add to Favorite</div>
-  <img align="right" width="100%" src="https://github.com/sanujasethi06/image-gallery-app/blob/main/preview/Screencast%20from%2020-01-24%2010-31-07%20AM%20IST.gif">
+  <img align="right" width="100%" src="https://github.com/sanujasethi06/image-gallery-app/blob/main/preview/Screencast%20from%2020-01-24%2010-32-39%20AM%20IST.gif">
 </div>
 <div>
   <div>## Create a Album</div>
-  <img align="right" width="100%" src="https://github.com/sanujasethi06/image-gallery-app/blob/main/preview/Screencast%20from%2020-01-24%2010-31-07%20AM%20IST.gif">
+  <img align="right" width="100%" src="https://github.com/sanujasethi06/image-gallery-app/blob/main/preview/Screencast%20from%2020-01-24%2010-42-07%20AM%20IST.gif">
 </div>
 
 ## Getting Started
